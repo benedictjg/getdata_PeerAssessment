@@ -2,33 +2,25 @@
 ##STEP 0. loading packages, getting & reading files
 ####################################################################################################
 
-##loading dplyer and tidyr out of habit
+##loading plyr
 library(plyr)
-library(dplyr)
-library(tidyr)
 
 ##getting & unzipping the file if necessary and setting working directory
-if (file.exists("./UCI HAR Dataset")==FALSE | file.exists("./train") == FALSE){
+if (file.exists("./UCI HAR Dataset")==FALSE){
     fileurl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
     download.file(fileurl, destfile = "getdatazip.zip", method="curl")
     unzip("getdatazip.zip")
-    wd <- getwd()
-    setwd(paste(wd,"UCI HAR Dataset",sep="")
-} else if (file.exists("./UCI HAR Dataset") == TRUE) {
-    wd <- getwd()
-    setwd(paste(wd,"/UCI HAR Dataset",sep=""))
-}
 }
 
 ##reading in test, train, feature, & label files
-xtest <- read.table("./test/X_test.txt")
-ytest <- read.table("./test/Y_test.txt")
-subtest <- read.table("./test/subject_test.txt")
-xtrain <- read.table("./train/X_train.txt")
-ytrain <- read.table("./train/Y_train.txt")
-subtrain <- read.table("./train/subject_train.txt")
-features <- read.table("features.txt")
-labels <- read.table("activity_labels.txt")
+xtest <- read.table("./UCI HAR Dataset/test/X_test.txt")
+ytest <- read.table("./UCI HAR Dataset/test/Y_test.txt")
+subtest <- read.table("./UCI HAR Dataset/test/subject_test.txt")
+xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")
+ytrain <- read.table("./UCI HAR Dataset/train/Y_train.txt")
+subtrain <- read.table("./UCI HAR Dataset/train/subject_train.txt")
+features <- read.table("./UCI HAR Dataset/features.txt")
+labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
 
 ####################################################################################################
 ##STEP 1. Merging datasets to create one data set
